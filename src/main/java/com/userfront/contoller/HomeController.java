@@ -70,7 +70,7 @@ public class HomeController {
             return "redirect:/";
         }
     }
-	
+	//why don't we use RequestMethod Method
 	@RequestMapping(value = "/userFront")
 	public String userFront(Principal principal, Model model) {
 		User user = userService.findByUsername(principal.getName());
