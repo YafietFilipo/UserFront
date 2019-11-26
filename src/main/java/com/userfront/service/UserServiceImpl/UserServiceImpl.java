@@ -24,9 +24,7 @@ public class UserServiceImpl implements UserService {
 	 private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
 	@Autowired
-	UserDao userDao;
-	
-	
+	private UserDao userDao;
     @Autowired
     private RoleDao roleDao;
 
