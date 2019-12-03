@@ -150,7 +150,7 @@ public class TransactionServiceImpl implements TransactionService {
 			
 			Date date = new Date();
 			
-			PrimaryTransaction primaryTransaction = new PrimaryTransaction(date, "Transfer to recipient"+recipient.getName(), "Transfer", "Finished", Double.parseDouble(amount), primaryAccount.getAccountBalance(), primaryAccount);
+			PrimaryTransaction primaryTransaction = new PrimaryTransaction(date, "Transfer to recipient "+recipient.getName(), "Transfer", "Finished", Double.parseDouble(amount), primaryAccount.getAccountBalance(), primaryAccount);
 			primaryTransactionDao.save(primaryTransaction);
 			
 		}else if(accountType.equalsIgnoreCase("Savings"))
@@ -160,7 +160,7 @@ public class TransactionServiceImpl implements TransactionService {
 			
 			Date date = new Date();
 			
-		SavingsTransaction savingsTransaction = new SavingsTransaction(date, "Transfer to recipient"+recipient.getName(), "Transfer", "Finished", Double.parseDouble(amount), savingsAccount.getAccountBalance(), savingsAccount);
+		SavingsTransaction savingsTransaction = new SavingsTransaction(date, "Transfer to recipient "+recipient.getName(), "Transfer", "Finished", Double.parseDouble(amount), savingsAccount.getAccountBalance(), savingsAccount);
 			savingsTransactionDao.save(savingsTransaction);
 		}else {
 			
