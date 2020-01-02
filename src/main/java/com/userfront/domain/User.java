@@ -36,8 +36,9 @@ public class User implements UserDetails{
     @Column(name = "email", nullable = false, unique = true)
     private String email;
     private String phone;
-
-    private boolean enabled=true;
+    
+    @Column(name = "enabled", columnDefinition="BIT DEFAULT 1", length = 1)
+    private boolean enabled = true;
 
     @OneToOne
     private PrimaryAccount primaryAccount;

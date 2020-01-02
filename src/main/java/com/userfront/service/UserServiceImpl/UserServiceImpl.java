@@ -1,5 +1,6 @@
 package com.userfront.service.UserServiceImpl;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.transaction.Transactional;
@@ -18,6 +19,7 @@ import com.userfront.service.AccountService;
 import com.userfront.service.UserService;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 	
 	 private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
@@ -45,7 +47,7 @@ public class UserServiceImpl implements UserService {
 		return userDao.findByEmail(email);
 	}
 	
-	@Transactional
+	
     public User createUser(User user, Set<UserRole> userRoles) {
         User localUser = userDao.findByUsername(user.getUsername());
 
@@ -98,7 +100,25 @@ public class UserServiceImpl implements UserService {
 		userDao.save(user);
 	}
 
+	public List<User> findUserList(){
+		return userDao.findAll();
+	}
 
+	@Transactional
+	public void disableUser(String username) {
+		User user = findByUsername(username);
+		user.setEnabled(false);
+		userDao.save(user);
+		
+	}
+
+	@Transactional
+	public void enableUser(String username) {
+		User user = findByUsername(username);
+		user.setEnabled(true);
+		userDao.save(user);
+		
+	}
 
 
 

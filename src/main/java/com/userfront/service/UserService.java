@@ -1,5 +1,6 @@
 package com.userfront.service;
 
+import java.util.List;
 import java.util.Set;
 
 import com.userfront.domain.User;
@@ -21,4 +22,10 @@ public interface UserService {
 	User createUser(User user, Set<UserRole> userRoles);
 	
 	void saveUser(User user);
+
+	List<User> findUserList();
+
+	void disableUser(String username);
+
+	void enableUser(String username);
 }

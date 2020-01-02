@@ -48,7 +48,7 @@ public class HomeController {
 		return "signup";
 	}
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public String  signupPost(@ModelAttribute("user") User user,  Model model) {
+    public String  signupPost(@ModelAttribute("user") User user,  Model model) throws Exception{
 
         if(userService.checkUserExists(user.getUsername(), user.getEmail()))  {
 
