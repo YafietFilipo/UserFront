@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.userfront.domain.Appointment;
+import com.userfront.domain.User;
 import com.userfront.service.AppointmentService;
 import com.userfront.service.UserService;
 
@@ -40,9 +41,9 @@ public class AppointmentController {
 		
 		SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		Date d1 = format1.parse(date);
-		appointment.setDate(d1);
-		userService.findByUsername(principal.getName());
-		
+		appointment.setDate(d1);//I forgot to set the user to the appointment Object
+		User user = userService.findByUsername(principal.getName());
+		appointment.setUser(user);
 		appointmentService.createAppointment(appointment);
 		
 		return "redirect:/userFront";
